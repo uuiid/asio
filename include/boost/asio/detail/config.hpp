@@ -248,6 +248,7 @@
 #endif // !defined(BOOST_ASIO_CONSTEXPR)
 #if !defined(BOOST_ASIO_STATIC_CONSTEXPR)
 # if defined(BOOST_ASIO_HAS_CONSTEXPR)
+/// @brief 这个就是c17常量的代替宏
 #  define BOOST_ASIO_STATIC_CONSTEXPR(type, assignment) \
     static constexpr type assignment
 # else // defined(BOOST_ASIO_HAS_CONSTEXPR)

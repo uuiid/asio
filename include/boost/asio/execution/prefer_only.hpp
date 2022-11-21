@@ -63,6 +63,11 @@ struct prefer_only
 namespace execution {
 namespace detail {
 
+/**
+ * @brief 更可取的 
+ * 
+ * @tparam InnerProperty 如果定义需要 InnerProperty::is_preferable
+ */
 template <typename InnerProperty, typename = void>
 struct prefer_only_is_preferable
 {
@@ -78,6 +83,11 @@ struct prefer_only_is_preferable<InnerProperty,
   BOOST_ASIO_STATIC_CONSTEXPR(bool, is_preferable = true);
 };
 
+/**
+ * @brief 多态查询结果类型
+ * 
+ * @tparam InnerProperty InnerProperty::polymorphic_query_result_type
+ */
 template <typename InnerProperty, typename = void>
 struct prefer_only_polymorphic_query_result_type
 {
@@ -156,7 +166,11 @@ char prefer_only_value_memfn_helper(
     prefer_only_memfns_check<
       void (prefer_only_memfns_base::*)(),
       &prefer_only_memfns_derived<T>::value>*);
-
+/**
+ * @brief 仅首选属性
+ * 
+ * @tparam InnerProperty 
+ */
 template <typename InnerProperty>
 struct prefer_only_property<InnerProperty,
     typename enable_if<
