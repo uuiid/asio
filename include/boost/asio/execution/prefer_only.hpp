@@ -158,6 +158,12 @@ struct prefer_only_memfns_check
 {
 };
 
+/**
+ * @brief 使用重载判断类内部是否定义  value() 函数类型
+ * 
+ * @tparam typename 任意
+ * @return char(&)[2] char数组的引用大小为2
+ */
 template <typename>
 char (&prefer_only_value_memfn_helper(...))[2];
 
@@ -167,7 +173,7 @@ char prefer_only_value_memfn_helper(
       void (prefer_only_memfns_base::*)(),
       &prefer_only_memfns_derived<T>::value>*);
 /**
- * @brief 仅首选属性
+ * @brief 仅首选属性, 需要有 polymorphic_query_result_type value() 这样的成员函数( @b 常量 ), 以及定义 polymorphic_query_result_type 类型 @b 不为void
  * 
  * @tparam InnerProperty 
  */

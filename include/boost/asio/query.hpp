@@ -103,6 +103,7 @@ struct query_result
 namespace boost_asio_query_fn {
 
 using boost::asio::conditional;
+/// 衰减定义
 using boost::asio::decay;
 using boost::asio::declval;
 using boost::asio::enable_if;
@@ -115,10 +116,10 @@ void query();
 
 enum overload_type
 {
-  static_value,
-  call_member,
-  call_free,
-  ill_formed
+  static_value, // 静态值
+  call_member,  // 调用成员函数
+  call_free,    // 调用自由函数
+  ill_formed    // 格式不正确
 };
 
 template <typename Impl, typename T, typename Properties,

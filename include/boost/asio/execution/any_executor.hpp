@@ -965,10 +965,12 @@ protected:
   struct target_fns
   {
 #if !defined(BOOST_ASIO_NO_TYPEID)
+    /// @brief 目标类型定义函数指针
     const std::type_info& (*target_type)();
 #else // !defined(BOOST_ASIO_NO_TYPEID)
     const void* (*target_type)();
 #endif // !defined(BOOST_ASIO_NO_TYPEID)
+    /// @brief 判断是否相等
     bool (*equal)(const any_executor_base&, const any_executor_base&);
     void (*execute)(const any_executor_base&, BOOST_ASIO_MOVE_ARG(function));
     void (*blocking_execute)(const any_executor_base&, function_view);

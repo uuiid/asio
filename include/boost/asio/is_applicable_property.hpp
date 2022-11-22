@@ -22,6 +22,13 @@ namespace boost {
 namespace asio {
 namespace detail {
 
+/**
+ * @brief 这个辅助类将属性转为类内部属性
+ * 
+ * @tparam T 
+ * @tparam Property 
+ * @tparam typename 
+ */
 template <typename T, typename Property, typename = void>
 struct is_applicable_property_trait : false_type
 {
@@ -51,6 +58,7 @@ struct is_applicable_property :
 
 #if defined(BOOST_ASIO_HAS_VARIABLE_TEMPLATES)
 
+/// @brief 需要类内部定义 is_applicable_property_v
 template <typename T, typename Property>
 BOOST_ASIO_CONSTEXPR const bool is_applicable_property_v
   = is_applicable_property<T, Property>::value;
